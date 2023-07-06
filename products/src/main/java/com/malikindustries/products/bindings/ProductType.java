@@ -1,15 +1,15 @@
 package com.malikindustries.products.bindings;
 
 public class ProductType {
-    String productId;
+    Integer productId;
     String productCategory;
     Integer quantity;
 
-    public String getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 

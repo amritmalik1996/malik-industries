@@ -20,7 +20,7 @@ public class ProductsApplication {
 		AddProductRequestType addProductRequestType = new AddProductRequestType();
 		ProductType productType = new ProductType();
 		productType.setProductCategory("Electronics");
-		productType.setProductId("45128");
+		productType.setProductId(45128);
 		productType.setQuantity(512);
 		addProductRequestType.setProductType(productType);
 		addProductRequestType.setStoreId(5641);
