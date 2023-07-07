@@ -17,6 +17,7 @@ public class AddProductServiceImpl implements AddProductService {
         switch(productManagementModel.getAction()) {
             case "add": return productManagementDao.insertProduct(productManagementModel);
             case "deduct": return productManagementDao.deductProduct(productManagementModel);
+            case "remove": return productManagementDao.deleteProduct(productManagementModel);
         }
         StatusType statusType = new StatusType();
         statusType.setStatusDesc("Some problem occurred please contact customer support");

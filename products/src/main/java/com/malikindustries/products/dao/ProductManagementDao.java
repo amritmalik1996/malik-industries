@@ -7,5 +7,5 @@ public interface ProductManagementDao {
 
     public StatusType insertProduct(ProductManagementModel productManagementModel);
     public StatusType deductProduct(ProductManagementModel productManagementModel);
-    public String deleteProduct(ProductManagementModel productManagementModel);
+    public StatusType deleteProduct(ProductManagementModel productManagementModel);
 }

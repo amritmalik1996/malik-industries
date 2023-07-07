@@ -66,8 +66,19 @@ public class ProductManagementDaoImpl implements ProductManagementDao {
     }
 
     @Override
-    public String deleteProduct(ProductManagementModel productManagementModel) {
-        return "deleted";
+    public StatusType deleteProduct(ProductManagementModel productManagementModel) {
+        StatusType statusType = new StatusType();
+        Integer id = getId(productManagementModel);
+
+        if(id==0){
+            statusType.setStatusDesc("This product is not available in this store");
+            statusType.setStatusCd("E-005");
+            return statusType;
+        }
+        jdbcTemplate.update("DELETE FROM ProductTable WHERE ID = ?",id);
+        statusType.setStatusDesc("Product deducted successfully.");
+        statusType.setStatusCd("003");
+        return statusType;
     }
 
     private Integer getId(ProductManagementModel productManagementModel){
