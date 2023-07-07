@@ -1,8 +1,9 @@
 package com.malikindustries.products.service;
 
-import com.malikindustries.products.model.AddProduct;
+import com.malikindustries.products.model.ProductManagementModel;
+import com.malikindustries.products.model.StatusType;
 
 public interface AddProductService {
 
-    public Boolean addProduct(AddProduct addProduct);
+    public StatusType maintainProduct(ProductManagementModel productManagementModel);
 }

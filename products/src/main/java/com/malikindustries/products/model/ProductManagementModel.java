@@ -1,10 +1,19 @@
 package com.malikindustries.products.model;
 
-public class AddProduct {
+public class ProductManagementModel {
     Integer productId;
     Integer StoreId;
     String productCategory;
     Integer quantity;
+    String action;
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
 
     public Integer getProductId() {
         return productId;

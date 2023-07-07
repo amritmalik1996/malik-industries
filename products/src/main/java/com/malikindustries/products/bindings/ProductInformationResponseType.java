@@ -1,5 +1,7 @@
 package com.malikindustries.products.bindings;
 
+import com.malikindustries.products.model.ErrorsType;
+
 public class ProductInformationResponseType {
     ProductType productType;
     ProductAvailabilityType productAvailabilityType;

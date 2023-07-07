@@ -1,9 +1,8 @@
-package com.malikindustries.products.bindings;
+package com.malikindustries.products.model;
 
-public class AddProductResponseType {
+public class StatusType {
     String statusCd;
     String statusDesc;
-    ErrorsType errorsType;
 
     public String getStatusCd() {
         return statusCd;
@@ -19,13 +18,5 @@ public class AddProductResponseType {
 
     public void setStatusDesc(String statusDesc) {
         this.statusDesc = statusDesc;
-    }
-
-    public ErrorsType getErrorsType() {
-        return errorsType;
-    }
-
-    public void setErrorsType(ErrorsType errorsType) {
-        this.errorsType = errorsType;
     }
 }

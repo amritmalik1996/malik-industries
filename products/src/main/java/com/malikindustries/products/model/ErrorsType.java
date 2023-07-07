@@ -1,4 +1,4 @@
-package com.malikindustries.products.bindings;
+package com.malikindustries.products.model;
 
 public class ErrorsType {
 

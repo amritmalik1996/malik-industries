@@ -1,6 +1,6 @@
 package com.malikindustries.products.bindings;
 
-public class AddProductRequestType {
+public class ProductManagementRequestType {
 
     ProductType productType;
     Integer storeId;

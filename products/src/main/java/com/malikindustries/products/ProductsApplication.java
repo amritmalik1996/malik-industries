@@ -5,7 +5,6 @@ import com.malikindustries.products.bindings.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication
 public class ProductsApplication {
@@ -17,14 +16,14 @@ public class ProductsApplication {
 
 		ObjectMapper objectMapper = new ObjectMapper();
 
-		AddProductRequestType addProductRequestType = new AddProductRequestType();
+		ProductManagementRequestType productManagementRequestType = new ProductManagementRequestType();
 		ProductType productType = new ProductType();
 		productType.setProductCategory("Electronics");
 		productType.setProductId(45128);
 		productType.setQuantity(512);
-		addProductRequestType.setProductType(productType);
-		addProductRequestType.setStoreId(5641);
-		String json = objectMapper.writeValueAsString(addProductRequestType);
+		productManagementRequestType.setProductType(productType);
+		productManagementRequestType.setStoreId(5641);
+		String json = objectMapper.writeValueAsString(productManagementRequestType);
 		StoreDetailsType storeDetailsType = new StoreDetailsType();
 		storeDetailsType.setStoreId(5641);
 		storeDetailsType.setManagerName("Ramesh");

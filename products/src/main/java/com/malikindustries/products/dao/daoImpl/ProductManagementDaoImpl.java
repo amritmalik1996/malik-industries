@@ -1,7 +1,8 @@
 package com.malikindustries.products.dao.daoImpl;
 
 import com.malikindustries.products.dao.ProductManagementDao;
-import com.malikindustries.products.model.AddProduct;
+import com.malikindustries.products.model.ProductManagementModel;
+import com.malikindustries.products.model.StatusType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -14,27 +15,65 @@ public class ProductManagementDaoImpl implements ProductManagementDao {
     JdbcTemplate jdbcTemplate;
 
     @Override
-    public void insertProduct(AddProduct addProduct){
+    public StatusType insertProduct(ProductManagementModel productManagementModel){
 
-        Integer id = getId(addProduct);
+        StatusType statusType = new StatusType();
+        Integer id = getId(productManagementModel);
 
         if(id==0) {
             jdbcTemplate.update("INSERT into ProductTable VALUES (?,?,?,?)",
-                    addProduct.getProductId(), addProduct.getStoreId(),
-                    addProduct.getProductCategory(), addProduct.getQuantity());
+                    productManagementModel.getProductId(), productManagementModel.getStoreId(),
+                    productManagementModel.getProductCategory(), productManagementModel.getQuantity());
         }
         else{
             jdbcTemplate.update("UPDATE ProductTable SET QUANTITY = QUANTITY + ? WHERE ID=?",
-                    addProduct.getQuantity(), id);
+                    productManagementModel.getQuantity(), id);
 
         }
-
+        statusType.setStatusCd("001");
+        statusType.setStatusDesc("Product Added Successfully");
+        return statusType;
     }
 
-    private Integer getId(AddProduct addProduct){
+    @Override
+    public StatusType deductProduct(ProductManagementModel productManagementModel) {
+
+        StatusType statusType = new StatusType();
+        Integer id = getId(productManagementModel);
+
+        if(id==0){
+            statusType.setStatusDesc("This product is not available in this store");
+            statusType.setStatusCd("E-005");
+            return statusType;
+        }
+
+        Integer availableQuantity = jdbcTemplate.queryForObject("SELECT QUANTITY from ProductTable WHERE ID=?",
+                Integer.class,id);
+        Integer remainingAfterDeductionQuantity = Integer.valueOf(availableQuantity)-Integer.valueOf(productManagementModel.getQuantity());
+
+       if(availableQuantity<productManagementModel.getQuantity()){
+            statusType.setStatusDesc("Only "+availableQuantity+" units available in given store");
+            statusType.setStatusCd("E-005");
+            return statusType;
+        }
+
+
+        jdbcTemplate.update("UPDATE ProductTable SET QUANTITY = QUANTITY - ? WHERE ID=?",
+                productManagementModel.getQuantity(), id);
+        statusType.setStatusDesc("Product deducted successfully. "+remainingAfterDeductionQuantity+" items remaining");
+        statusType.setStatusCd("002");
+        return statusType;
+    }
+
+    @Override
+    public String deleteProduct(ProductManagementModel productManagementModel) {
+        return "deleted";
+    }
+
+    private Integer getId(ProductManagementModel productManagementModel){
         try {
             return jdbcTemplate.queryForObject("SELECT ID FROM ProductTable WHERE (STORE_ID=? AND PRODUCT_ID=?) ", Integer.class,
-                    addProduct.getStoreId(), addProduct.getProductId());
+                    productManagementModel.getStoreId(), productManagementModel.getProductId());
         }
         catch(EmptyResultDataAccessException e){
             return 0;

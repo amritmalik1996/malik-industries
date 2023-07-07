@@ -1,8 +1,11 @@
 package com.malikindustries.products.dao;
 
-import com.malikindustries.products.model.AddProduct;
+import com.malikindustries.products.model.ProductManagementModel;
+import com.malikindustries.products.model.StatusType;
 
 public interface ProductManagementDao {
 
-    public void insertProduct(AddProduct addProduct);
+    public StatusType insertProduct(ProductManagementModel productManagementModel);
+    public StatusType deductProduct(ProductManagementModel productManagementModel);
+    public String deleteProduct(ProductManagementModel productManagementModel);
 }
