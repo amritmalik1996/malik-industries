@@ -1,8 +1,8 @@
-package com.malikindustries.products.responseMapper;
+package com.malikindustries.products.mappers.responseMapper;
 
 import com.malikindustries.products.bindings.ProductManagementResponseType;
 import com.malikindustries.products.model.ErrorsType;
-import com.malikindustries.products.model.StatusType;
+import com.malikindustries.products.bindings.StatusType;
 
 public class ProductManagementResponseMapper {
 

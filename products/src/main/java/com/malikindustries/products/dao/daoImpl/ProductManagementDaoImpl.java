@@ -2,7 +2,7 @@ package com.malikindustries.products.dao.daoImpl;
 
 import com.malikindustries.products.dao.ProductManagementDao;
 import com.malikindustries.products.model.ProductManagementModel;
-import com.malikindustries.products.model.StatusType;
+import com.malikindustries.products.bindings.StatusType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;

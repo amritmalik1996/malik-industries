@@ -1,4 +1,4 @@
-package com.malikindustries.products.model;
+package com.malikindustries.products.bindings;
 
 public class StatusType {
     String statusCd;

@@ -1,9 +1,9 @@
 package com.malikindustries.products.dao;
 
 import com.malikindustries.products.model.ProductManagementModel;
-import com.malikindustries.products.model.StatusType;
+import com.malikindustries.products.bindings.StatusType;
 
-public interface ProductManagementDao {
+public interface ProductManagementDao  {
 
     public StatusType insertProduct(ProductManagementModel productManagementModel);
     public StatusType deductProduct(ProductManagementModel productManagementModel);

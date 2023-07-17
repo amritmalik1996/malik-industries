@@ -2,13 +2,13 @@ package com.malikindustries.products.service.serviceImpl;
 
 import com.malikindustries.products.dao.daoImpl.ProductManagementDaoImpl;
 import com.malikindustries.products.model.ProductManagementModel;
-import com.malikindustries.products.model.StatusType;
+import com.malikindustries.products.bindings.StatusType;
 import com.malikindustries.products.service.AddProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AddProductServiceImpl implements AddProductService {
+public class AddProductServiceImpl implements AddProductService  {
     @Autowired
     ProductManagementDaoImpl productManagementDao;
 

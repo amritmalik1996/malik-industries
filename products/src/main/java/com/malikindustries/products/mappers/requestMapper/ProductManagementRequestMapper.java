@@ -1,4 +1,4 @@
-package com.malikindustries.products.requestMapper;
+package com.malikindustries.products.mappers.requestMapper;
 
 import com.malikindustries.products.bindings.ProductManagementRequestType;
 import com.malikindustries.products.model.ProductManagementModel;
